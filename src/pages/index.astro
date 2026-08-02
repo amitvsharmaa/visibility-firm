@@ -14,60 +14,56 @@ const posts = (await getCollection('blog'))
 	.slice(0, 3);
 
 const how = [
-	{ label: 'AI' },
-	{ label: 'Marketing Automation' },
-	{ label: 'CRM' },
-	{ label: 'Revenue Operations' },
-	{ label: 'Customer Journey Design' },
-	{ label: 'Modern Web Experiences' },
-	{ label: 'Analytics' },
-	{ label: 'AI Search Visibility' },
+	'AI',
+	'Marketing Automation',
+	'CRM',
+	'Revenue Operations',
+	'Customer Journey Design',
+	'Modern Web Experiences',
+	'Analytics',
+	'AI Search Visibility',
 ];
 
 const whatWeBuild = [
 	{
 		title: 'CRM Systems',
 		description: 'One system of record for every lead, client, and conversation — no more spreadsheets.',
+		icon: 'M4 5.5h16M4 12h16M4 18.5h10',
+		big: true,
 	},
 	{
 		title: 'Marketing Automation',
 		description: 'Email, SMS, and follow-up sequences that nurture leads automatically, 24/7.',
+		icon: 'M4 6.5h16v11H4v-11Zm0 0 8 6 8-6',
 	},
 	{
 		title: 'Lead Management',
 		description: 'Structured pipelines so no inquiry sits unanswered and every lead gets tracked to close.',
+		icon: 'M4 5h16l-6 8v6l-4-2v-4L4 5Z',
+	},
+	{
+		title: 'AI Workflows',
+		description: 'AI agents that handle routine follow-up, scheduling, and admin work around the clock.',
+		icon: 'M12 3v3m0 12v3M4.2 6.2l2.1 2.1m11.4 7.4 2.1 2.1M3 12h3m12 0h3M4.2 17.8l2.1-2.1m11.4-7.4 2.1-2.1M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z',
+		big: true,
 	},
 	{
 		title: 'Client Onboarding',
 		description: 'Automated onboarding flows that set expectations and collect what you need, faster.',
-	},
-	{
-		title: 'AI Workflows',
-		description: 'AI agents and automations that handle repetitive follow-up, scheduling, and admin work.',
+		icon: 'M8 4h8l3 3v13H5V7l3-3Zm0 6h8m-8 4h5',
 	},
 	{
 		title: 'Reporting Dashboards',
 		description: 'Clear, live visibility into leads, pipeline, and ROI — no more guessing what is working.',
+		icon: 'M4 19V9m6 10V4m6 15v-7m6 7V11',
 	},
 ];
 
 const values = [
-	{
-		title: 'Simplicity',
-		description: 'Complex businesses deserve simple systems.',
-	},
-	{
-		title: 'Automation First',
-		description: 'Anything repetitive should be automated.',
-	},
-	{
-		title: 'Business Before Technology',
-		description: 'Technology exists to solve business problems — not create more complexity.',
-	},
-	{
-		title: 'Transparency',
-		description: 'Clear communication. Clear pricing. Clear results.',
-	},
+	{ title: 'Simplicity', description: 'Complex businesses deserve simple systems.' },
+	{ title: 'Automation First', description: 'Anything repetitive should be automated.' },
+	{ title: 'Business Before Technology', description: 'Technology exists to solve business problems — not create more complexity.' },
+	{ title: 'Transparency', description: 'Clear communication. Clear pricing. Clear results.' },
 ];
 
 const process = [
@@ -87,18 +83,35 @@ const process = [
 		<Header />
 		<main>
 			<!-- HERO -->
-			<section class="relative overflow-hidden bg-ink pt-16 pb-24 sm:pt-20 sm:pb-32">
-				<div class="bg-grid pointer-events-none absolute inset-0 opacity-50"></div>
-				<div class="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-accent/25 blur-[130px]"></div>
+			<section class="relative overflow-hidden bg-ink pt-16 pb-20 sm:pt-20">
+				<div class="noise-overlay"></div>
+				<div class="bg-grid pointer-events-none absolute inset-0 opacity-40"></div>
+				<div
+					class="mesh-blob left-1/2 -top-52 h-[560px] w-[720px] -translate-x-1/2 bg-accent/35"
+					style="animation: blob-drift 16s ease-in-out infinite;"
+				>
+				</div>
+				<div
+					class="mesh-blob -right-24 top-10 h-[380px] w-[380px] bg-accent-violet/25"
+					style="animation: blob-drift 20s ease-in-out infinite 2s;"
+				>
+				</div>
+				<div
+					class="mesh-blob -left-24 top-64 h-[320px] w-[320px] bg-gold/20"
+					style="animation: blob-drift 22s ease-in-out infinite 1s;"
+				>
+				</div>
 
 				<Container class="relative">
-					<div class="mx-auto max-w-3xl text-center animate-fade-up">
-						<a href="/services" class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-dark hover:border-white/25">
-							<span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
-							For CPA &amp; accounting firms
-						</a>
-						<h1 class="mt-6 text-4xl leading-[1.1] font-semibold text-white sm:text-5xl lg:text-6xl">
-							Building AI-Powered Growth Systems for Accounting Firms
+					<div class="mx-auto max-w-3xl text-center">
+						<span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-dark">
+							<span class="relative flex h-2 w-2">
+								<span class="pulse-dot absolute h-2 w-2 rounded-full bg-gold"></span>
+							</span>
+							Live systems, built for CPA &amp; accounting firms
+						</span>
+						<h1 class="mt-6 text-[2.6rem] leading-[1.08] font-semibold text-white sm:text-6xl lg:text-[4.2rem]">
+							Building <span class="gradient-text">AI-Powered</span> Growth Systems for Accounting Firms
 						</h1>
 						<p class="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-slate-dark">
 							The Visibility Firm helps CPA and accounting firms attract, convert, and retain more
@@ -113,35 +126,83 @@ const process = [
 						</div>
 					</div>
 
-					<!-- Abstract product / dashboard mockup -->
-					<div class="relative mx-auto mt-16 max-w-4xl animate-fade-in">
-						<div class="rounded-2xl border border-white/10 bg-ink-2/80 p-3 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.6)] backdrop-blur">
-							<div class="flex items-center gap-1.5 px-2 pb-3">
-								<span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-								<span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-								<span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-							</div>
-							<div class="grid gap-3 rounded-xl bg-ink/60 p-5 sm:grid-cols-3">
-								<div class="rounded-lg border border-white/10 bg-white/[0.03] p-4 sm:col-span-2">
-									<p class="text-xs font-medium text-slate-dark">Qualified Leads</p>
-									<div class="mt-3 flex h-28 items-end gap-1.5">
-										{[38, 52, 46, 61, 58, 70, 64, 80, 76, 92].map((h) => (
+					<!-- capability marquee -->
+					<div class="marquee mt-16">
+						<div class="marquee-track items-center gap-3 py-1">
+							{
+								[...how, ...how].map((item) => (
+									<span class="mx-1.5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-medium whitespace-nowrap text-slate-dark">
+										<span class="h-1 w-1 rounded-full bg-gold" />
+										{item}
+									</span>
+								))
+							}
+						</div>
+					</div>
+
+					<!-- Dynamic floating hero visual -->
+					<div id="hero-visual" class="relative mx-auto mt-16 h-[420px] max-w-4xl sm:h-[460px]" style="perspective: 1200px;">
+						<div id="hero-visual-inner" class="relative h-full w-full transition-transform duration-200 ease-out" style="transform-style: preserve-3d;">
+							<!-- main dashboard card -->
+							<div class="glass-card absolute top-1/2 left-1/2 w-[86%] max-w-xl -translate-x-1/2 -translate-y-1/2 rounded-2xl p-3 shadow-[0_40px_120px_-30px_rgba(70,80,230,0.35)] sm:w-[72%]">
+								<div class="flex items-center gap-1.5 px-2 pb-3">
+									<span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+									<span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+									<span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+									<span class="ml-auto text-[11px] font-medium text-slate-dark">Growth System &middot; Live</span>
+								</div>
+								<div class="rounded-xl bg-ink/60 p-5">
+									<p class="text-xs font-medium text-slate-dark">Qualified Leads — Last 10 Weeks</p>
+									<div class="mt-4 flex h-32 items-end gap-1.5">
+										{[38, 52, 46, 61, 58, 70, 64, 80, 76, 94].map((h) => (
 											<div class="flex-1 rounded-t bg-gradient-to-t from-accent/70 to-accent-2" style={`height:${h}%`}></div>
 										))}
 									</div>
 								</div>
-								<div class="flex flex-col gap-3">
-									<div class="rounded-lg border border-white/10 bg-white/[0.03] p-4">
-										<p class="text-xs font-medium text-slate-dark">Follow-ups automated</p>
-										<p class="mt-2 font-display text-2xl font-semibold text-white">100%</p>
-									</div>
-									<div class="rounded-lg border border-white/10 bg-white/[0.03] p-4">
-										<p class="text-xs font-medium text-slate-dark">System</p>
-										<p class="mt-2 flex items-center gap-1.5 text-sm text-white">
-											<span class="h-1.5 w-1.5 rounded-full bg-gold"></span> Live &amp; automated
-										</p>
-									</div>
+							</div>
+
+							<!-- floating card: AI agent activity -->
+							<div
+								class="glass-card absolute top-2 left-0 w-64 rounded-xl p-4 shadow-xl sm:top-4 sm:left-2"
+								style="--float-r:-4deg; animation: float-slow 7s ease-in-out infinite;"
+							>
+								<div class="flex items-center gap-2">
+									<span class="flex h-6 w-6 items-center justify-center rounded-full bg-accent-violet/25 text-accent-2">
+										<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none"><path d="M12 3v3m0 12v3M4.2 6.2l2.1 2.1m11.4 7.4 2.1 2.1M3 12h3m12 0h3M4.2 17.8l2.1-2.1m11.4-7.4 2.1-2.1M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+									</span>
+									<p class="text-xs font-semibold text-white">AI Workflow</p>
+									<span class="ml-auto rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-medium text-gold">Automated</span>
 								</div>
+								<p class="mt-2.5 text-[12.5px] leading-snug text-slate-dark">Following up with 12 leads who haven&rsquo;t responded in 48 hours&hellip;</p>
+								<div class="mt-2 flex gap-1">
+									<span class="typing-dot h-1.5 w-1.5 rounded-full bg-accent-2" style="animation-delay:0ms"></span>
+									<span class="typing-dot h-1.5 w-1.5 rounded-full bg-accent-2" style="animation-delay:150ms"></span>
+									<span class="typing-dot h-1.5 w-1.5 rounded-full bg-accent-2" style="animation-delay:300ms"></span>
+								</div>
+							</div>
+
+							<!-- floating card: new lead toast -->
+							<div
+								class="glass-card absolute right-0 bottom-6 w-60 rounded-xl p-4 shadow-xl sm:right-4 sm:bottom-10"
+								style="--float-r:3deg; animation: float-slow 8s ease-in-out infinite 0.6s;"
+							>
+								<div class="flex items-center gap-2">
+									<span class="flex h-6 w-6 items-center justify-center rounded-full bg-gold/20 text-gold">
+										<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none"><path d="M4 5h16l-6 8v6l-4-2v-4L4 5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+									</span>
+									<p class="text-xs font-semibold text-white">New Lead Captured</p>
+								</div>
+								<p class="mt-2.5 text-[12.5px] leading-snug text-slate-dark">Web form &middot; Jane D. requested a consultation call.</p>
+								<p class="mt-1.5 text-[11px] font-medium text-accent-2">Auto-response sent &middot; 4s ago</p>
+							</div>
+
+							<!-- floating stat pill -->
+							<div
+								class="glass-card absolute bottom-0 left-4 rounded-xl px-4 py-3 shadow-xl sm:left-10"
+								style="--float-r:-2deg; animation: float-slow 6.5s ease-in-out infinite 0.3s;"
+							>
+								<p class="text-[11px] font-medium text-slate-dark">Follow-ups automated</p>
+								<p class="font-display text-xl font-semibold text-white">100%</p>
 							</div>
 						</div>
 					</div>
@@ -149,7 +210,7 @@ const process = [
 			</section>
 
 			<!-- PROBLEM -->
-			<section class="py-20 sm:py-28">
+			<section class="py-20 sm:py-28" data-reveal>
 				<Container>
 					<div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
 						<div>
@@ -171,7 +232,7 @@ const process = [
 									'Teams waste hours on repetitive work',
 									'Marketing rarely produces measurable ROI',
 								].map((item) => (
-									<div class="rounded-xl border border-line bg-mist p-5">
+									<div class="group rounded-xl border border-line bg-mist p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-lg">
 										<svg class="h-5 w-5 text-accent" viewBox="0 0 20 20" fill="none" aria-hidden="true">
 											<path d="M10 6v5m0 3h.01M2.5 10a7.5 7.5 0 1 1 15 0 7.5 7.5 0 0 1-15 0Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 										</svg>
@@ -185,7 +246,7 @@ const process = [
 			</section>
 
 			<!-- PHILOSOPHY / HOW -->
-			<section class="border-y border-line bg-mist py-20 sm:py-28">
+			<section class="border-y border-line bg-mist py-20 sm:py-28" data-reveal>
 				<Container>
 					<div class="mx-auto max-w-2xl text-center">
 						<p class="text-xs font-semibold tracking-widest text-accent uppercase">Our philosophy</p>
@@ -200,8 +261,8 @@ const process = [
 					<div class="mx-auto mt-12 flex max-w-3xl flex-wrap justify-center gap-3">
 						{
 							how.map((item) => (
-								<span class="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-ink shadow-sm">
-									{item.label}
+								<span class="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-ink shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md">
+									{item}
 								</span>
 							))
 						}
@@ -209,8 +270,8 @@ const process = [
 				</Container>
 			</section>
 
-			<!-- WHAT WE BUILD -->
-			<section class="py-20 sm:py-28" id="services">
+			<!-- WHAT WE BUILD — bento grid -->
+			<section class="py-20 sm:py-28" id="services" data-reveal>
 				<Container>
 					<div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
 						<div class="max-w-xl">
@@ -222,9 +283,20 @@ const process = [
 					<div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 						{
 							whatWeBuild.map((item) => (
-								<div class="group rounded-2xl border border-line p-6 transition-colors hover:border-accent/30 hover:bg-mist">
-									<h3 class="text-[17px] font-semibold text-ink">{item.title}</h3>
-									<p class="mt-2 text-[14.5px] leading-relaxed text-slate">{item.description}</p>
+								<div
+									class:list={[
+										'group relative overflow-hidden rounded-2xl border border-line p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-xl',
+										item.big && 'lg:col-span-2',
+									]}
+								>
+									<div class="absolute -top-8 -right-8 h-24 w-24 rounded-full bg-accent/0 blur-2xl transition-colors duration-300 group-hover:bg-accent/10" />
+									<span class="relative flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-white">
+										<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+											<path d={item.icon} stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+									</span>
+									<h3 class="relative mt-4 text-[17px] font-semibold text-ink">{item.title}</h3>
+									<p class="relative mt-2 text-[14.5px] leading-relaxed text-slate">{item.description}</p>
 								</div>
 							))
 						}
@@ -233,20 +305,21 @@ const process = [
 			</section>
 
 			<!-- PROCESS -->
-			<section class="border-y border-line bg-mist py-20 sm:py-28">
+			<section class="border-y border-line bg-mist py-20 sm:py-28" data-reveal>
 				<Container>
 					<div class="max-w-xl">
 						<p class="text-xs font-semibold tracking-widest text-accent uppercase">How we work</p>
 						<h2 class="mt-4 text-3xl font-semibold sm:text-4xl">A clear path from audit to automated system.</h2>
 					</div>
-					<div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+					<div class="relative mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+						<div class="absolute top-6 right-0 left-0 hidden h-px bg-gradient-to-r from-transparent via-line-dark/30 to-transparent lg:block"></div>
 						{
-							process.map((item, i) => (
+							process.map((item) => (
 								<div class="relative">
-									<p class="font-display text-4xl font-semibold text-line-dark/40" style="color: color-mix(in oklab, var(--color-accent) 18%, white);">
+									<div class="flex h-12 w-12 items-center justify-center rounded-full border border-accent/20 bg-white font-display text-sm font-semibold text-accent shadow-sm">
 										{item.step}
-									</p>
-									<h3 class="mt-3 text-[16px] font-semibold text-ink">{item.title}</h3>
+									</div>
+									<h3 class="mt-4 text-[16px] font-semibold text-ink">{item.title}</h3>
 									<p class="mt-2 text-[14.5px] leading-relaxed text-slate">{item.description}</p>
 								</div>
 							))
@@ -256,7 +329,7 @@ const process = [
 			</section>
 
 			<!-- VALUES -->
-			<section class="py-20 sm:py-28">
+			<section class="py-20 sm:py-28" data-reveal>
 				<Container>
 					<div class="max-w-xl">
 						<p class="text-xs font-semibold tracking-widest text-accent uppercase">Why The Visibility Firm</p>
@@ -285,7 +358,7 @@ const process = [
 			<!-- INSIGHTS PREVIEW -->
 			{
 				posts.length > 0 && (
-					<section class="border-t border-line py-20 sm:py-28">
+					<section class="border-t border-line py-20 sm:py-28" data-reveal>
 						<Container>
 							<div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
 								<div class="max-w-xl">
@@ -323,5 +396,24 @@ const process = [
 			/>
 		</main>
 		<Footer />
+
+		<script>
+			// Subtle pointer-parallax tilt on the hero visual — purely decorative,
+			// skipped entirely for reduced-motion users.
+			const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			const wrap = document.getElementById('hero-visual');
+			const inner = document.getElementById('hero-visual-inner');
+			if (wrap && inner && !prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
+				wrap.addEventListener('mousemove', (e) => {
+					const rect = wrap.getBoundingClientRect();
+					const x = (e.clientX - rect.left) / rect.width - 0.5;
+					const y = (e.clientY - rect.top) / rect.height - 0.5;
+					inner.style.transform = `rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
+				});
+				wrap.addEventListener('mouseleave', () => {
+					inner.style.transform = 'rotateY(0deg) rotateX(0deg)';
+				});
+			}
+		</script>
 	</body>
 </html>
