@@ -1,0 +1,23 @@
+---
+// Embeds the GoHighLevel / LeadConnector booking calendar so visitors can
+// book a strategy call directly on the site. The form_embed.js script
+// (loaded once below) listens for postMessage events from the iframe and
+// resizes it automatically, so `height` below is just a sane initial value.
+interface Props {
+	class?: string;
+	height?: string;
+}
+const { class: className = '', height = '900px' } = Astro.props;
+---
+
+<div class:list={['ghl-widget-wrap overflow-hidden rounded-2xl border border-line bg-white', className]}>
+	<iframe
+		src="https://api.leadconnectorhq.com/widget/bookings/free-tax-consultation-michael-anderson"
+		style={`width:100%;border:none;overflow:hidden;height:${height};`}
+		scrolling="no"
+		id="msgsndr-calendar"
+		title="Book a free strategy call"
+	></iframe>
+</div>
+
+<script src="https://link.msgsndr.com/js/form_embed.js" is:inline></script>

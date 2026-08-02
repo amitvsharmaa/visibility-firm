@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Container from '../components/Container.astro';
+import GhlBookingWidget from '../components/GhlBookingWidget.astro';
 import { CONTACT_EMAIL } from '../consts';
 
 const title = 'Contact';
@@ -44,98 +45,33 @@ const faqs = [
 						<p class="text-xs font-semibold tracking-widest text-accent uppercase">Contact</p>
 						<h1 class="mt-4 text-4xl font-semibold sm:text-5xl">Let&rsquo;s build your growth system.</h1>
 						<p class="prose-tvf mx-auto mt-6 max-w-xl text-[17px]">
-							Tell us a bit about your firm and we&rsquo;ll follow up to schedule your free strategy
-							call.
+							Pick a time that works for you below and we&rsquo;ll meet for a free strategy call —
+							no forms to chase, no back-and-forth.
 						</p>
 					</div>
 				</Container>
 			</section>
 
-			<!-- FORM + INFO -->
+			<!-- BOOKING CALENDAR + INFO -->
 			<section class="py-20 sm:py-28">
 				<Container>
 					<div class="grid gap-14 lg:grid-cols-[1fr_380px] lg:gap-20">
-						<!--
-							Front-end only for now. Wire the `action` up to your CRM/GoHighLevel
-							form endpoint (or another form backend) to start receiving submissions —
-							the JS below just shows a confirmation state on submit.
-						-->
-						<form id="contact-form" class="space-y-5" method="POST" action="#">
-							<div class="grid gap-5 sm:grid-cols-2">
-								<div>
-									<label for="name" class="text-sm font-medium text-ink">Full name</label>
-									<input
-										id="name"
-										name="name"
-										type="text"
-										required
-										autocomplete="name"
-										class="mt-2 w-full rounded-lg border border-line bg-white px-4 py-2.5 text-[15px] text-ink placeholder:text-slate-2 focus:border-accent focus:outline-none"
-										placeholder="Jane Smith"
-									/>
-								</div>
-								<div>
-									<label for="firm" class="text-sm font-medium text-ink">Firm name</label>
-									<input
-										id="firm"
-										name="firm"
-										type="text"
-										required
-										class="mt-2 w-full rounded-lg border border-line bg-white px-4 py-2.5 text-[15px] text-ink placeholder:text-slate-2 focus:border-accent focus:outline-none"
-										placeholder="Smith & Co. CPAs"
-									/>
-								</div>
-							</div>
-							<div class="grid gap-5 sm:grid-cols-2">
-								<div>
-									<label for="email" class="text-sm font-medium text-ink">Work email</label>
-									<input
-										id="email"
-										name="email"
-										type="email"
-										required
-										autocomplete="email"
-										class="mt-2 w-full rounded-lg border border-line bg-white px-4 py-2.5 text-[15px] text-ink placeholder:text-slate-2 focus:border-accent focus:outline-none"
-										placeholder="jane@smithcpas.com"
-									/>
-								</div>
-								<div>
-									<label for="phone" class="text-sm font-medium text-ink">Phone</label>
-									<input
-										id="phone"
-										name="phone"
-										type="tel"
-										autocomplete="tel"
-										class="mt-2 w-full rounded-lg border border-line bg-white px-4 py-2.5 text-[15px] text-ink placeholder:text-slate-2 focus:border-accent focus:outline-none"
-										placeholder="(555) 000-0000"
-									/>
-								</div>
-							</div>
-							<div>
-								<label for="message" class="text-sm font-medium text-ink">What&rsquo;s slowing your firm down right now?</label>
-								<textarea
-									id="message"
-									name="message"
-									rows="4"
-									class="mt-2 w-full rounded-lg border border-line bg-white px-4 py-2.5 text-[15px] text-ink placeholder:text-slate-2 focus:border-accent focus:outline-none"
-									placeholder="e.g. leads go cold, no CRM, too much manual follow-up..."></textarea>
-							</div>
-							<button
-								type="submit"
-								class="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-[15px] font-medium text-white transition-colors hover:bg-accent-dark"
-							>
-								Book a Strategy Call
-							</button>
-							<p id="form-success" class="hidden rounded-lg bg-mist px-4 py-3 text-[14.5px] text-ink">
-								Thanks — we&rsquo;ve got your details and will follow up shortly to schedule your call.
-							</p>
-						</form>
+						<GhlBookingWidget height="900px" />
 
 						<div class="space-y-8">
 							<div class="rounded-2xl border border-line p-6">
 								<p class="text-xs font-semibold tracking-widest text-accent uppercase">Email us</p>
 								<a href={`mailto:${CONTACT_EMAIL}`} class="mt-2 block text-[16px] font-medium text-ink hover:text-accent">
 									{CONTACT_EMAIL}
+								</a>
+							</div>
+							<div class="rounded-2xl border border-line p-6">
+								<p class="text-xs font-semibold tracking-widest text-accent uppercase">Prefer a form?</p>
+								<p class="mt-2 text-[14.5px] text-slate">
+									Tell us about your firm first and we&rsquo;ll follow up to schedule your call.
+								</p>
+								<a href="/get-started" class="mt-3 inline-flex items-center gap-1.5 text-[14.5px] font-medium text-accent hover:text-accent-dark">
+									Fill out the intake form &rarr;
 								</a>
 							</div>
 							<div class="rounded-2xl bg-ink p-6 text-white">
@@ -177,15 +113,5 @@ const faqs = [
 			</section>
 		</main>
 		<Footer />
-
-		<script>
-			const form = document.getElementById('contact-form') as HTMLFormElement | null;
-			const success = document.getElementById('form-success');
-			form?.addEventListener('submit', (e) => {
-				e.preventDefault();
-				success?.classList.remove('hidden');
-				form.reset();
-			});
-		</script>
 	</body>
 </html>

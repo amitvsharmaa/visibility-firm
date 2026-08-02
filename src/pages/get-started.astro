@@ -1,0 +1,52 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Container from '../components/Container.astro';
+import GhlFormWidget from '../components/GhlFormWidget.astro';
+import { CONTACT_EMAIL } from '../consts';
+
+const title = 'Get Started';
+const description =
+	'Tell us about your firm and we’ll follow up to schedule your free strategy call with The Visibility Firm.';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- HERO -->
+			<section class="border-b border-line bg-mist py-20 sm:py-24">
+				<Container>
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-xs font-semibold tracking-widest text-accent uppercase">Get Started</p>
+						<h1 class="mt-4 text-4xl font-semibold sm:text-5xl">Tell us about your firm.</h1>
+						<p class="prose-tvf mx-auto mt-6 max-w-xl text-[17px]">
+							A few quick details so we can follow up with the right next step — or
+							<a href="/contact" class="text-accent hover:text-accent-dark">book a call directly</a> instead.
+						</p>
+					</div>
+				</Container>
+			</section>
+
+			<!-- FORM -->
+			<section class="py-20 sm:py-28">
+				<Container>
+					<div class="mx-auto max-w-2xl">
+						<GhlFormWidget formId="idFIf7dbcC3wRVQc7kHa" formName="Get Started" height="720" />
+
+						<p class="mt-8 text-center text-[14.5px] text-slate">
+							Prefer email? Reach us directly at
+							<a href={`mailto:${CONTACT_EMAIL}`} class="font-medium text-accent hover:text-accent-dark">{CONTACT_EMAIL}</a>.
+						</p>
+					</div>
+				</Container>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

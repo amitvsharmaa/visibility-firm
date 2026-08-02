@@ -1,0 +1,35 @@
+---
+// Embeds a GoHighLevel / LeadConnector inline form. The form_embed.js
+// script (loaded once below) listens for postMessage events from the
+// iframe and resizes it automatically once the form renders.
+interface Props {
+	formId: string;
+	formName?: string;
+	class?: string;
+	height?: string;
+}
+const { formId, formName = 'Form', class: className = '', height = '720' } = Astro.props;
+const layoutId = `inline-${formId}`;
+---
+
+<div class:list={['ghl-widget-wrap overflow-hidden rounded-2xl border border-line bg-white', className]}>
+	<iframe
+		src={`https://api.leadconnectorhq.com/widget/form/${formId}`}
+		style="width:100%;height:100%;border:none;border-radius:3px"
+		id={layoutId}
+		data-layout={JSON.stringify({ id: 'INLINE' })}
+		data-trigger-type="alwaysShow"
+		data-trigger-value=""
+		data-activation-type="alwaysActivated"
+		data-activation-value=""
+		data-deactivation-type="neverDeactivate"
+		data-deactivation-value=""
+		data-form-name={formName}
+		data-height={height}
+		data-layout-iframe-id={layoutId}
+		data-form-id={formId}
+		title={formName}
+	></iframe>
+</div>
+
+<script src="https://link.msgsndr.com/js/form_embed.js" is:inline></script>
