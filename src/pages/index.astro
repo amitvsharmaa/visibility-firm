@@ -30,40 +30,68 @@ const whatWeBuild = [
 		description: 'One system of record for every lead, client, and conversation — no more spreadsheets.',
 		icon: 'M4 5.5h16M4 12h16M4 18.5h10',
 		big: true,
+		dark: true,
+		glow: 'bg-accent-2/30',
 	},
 	{
 		title: 'Marketing Automation',
 		description: 'Email, SMS, and follow-up sequences that nurture leads automatically, 24/7.',
 		icon: 'M4 6.5h16v11H4v-11Zm0 0 8 6 8-6',
+		tone: 'bg-accent/10 text-accent',
 	},
 	{
 		title: 'Lead Management',
 		description: 'Structured pipelines so no inquiry sits unanswered and every lead gets tracked to close.',
 		icon: 'M4 5h16l-6 8v6l-4-2v-4L4 5Z',
+		tone: 'bg-gold/15 text-gold-dark',
 	},
 	{
 		title: 'AI Workflows',
 		description: 'AI agents that handle routine follow-up, scheduling, and admin work around the clock.',
 		icon: 'M12 3v3m0 12v3M4.2 6.2l2.1 2.1m11.4 7.4 2.1 2.1M3 12h3m12 0h3M4.2 17.8l2.1-2.1m11.4-7.4 2.1-2.1M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z',
 		big: true,
+		dark: true,
+		glow: 'bg-gold/30',
 	},
 	{
 		title: 'Client Onboarding',
 		description: 'Automated onboarding flows that set expectations and collect what you need, faster.',
 		icon: 'M8 4h8l3 3v13H5V7l3-3Zm0 6h8m-8 4h5',
+		tone: 'bg-accent-violet/10 text-accent-violet',
 	},
 	{
 		title: 'Reporting Dashboards',
 		description: 'Clear, live visibility into leads, pipeline, and ROI — no more guessing what is working.',
 		icon: 'M4 19V9m6 10V4m6 15v-7m6 7V11',
+		tone: 'bg-accent-2/10 text-accent-dark',
 	},
 ];
 
 const values = [
-	{ title: 'Simplicity', description: 'Complex businesses deserve simple systems.' },
-	{ title: 'Automation First', description: 'Anything repetitive should be automated.' },
-	{ title: 'Business Before Technology', description: 'Technology exists to solve business problems — not create more complexity.' },
-	{ title: 'Transparency', description: 'Clear communication. Clear pricing. Clear results.' },
+	{
+		title: 'Simplicity',
+		description: 'Complex businesses deserve simple systems.',
+		icon: 'M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z M12 9v6M9 12h6',
+		tone: 'bg-accent/10 text-accent',
+	},
+	{
+		title: 'Automation First',
+		description: 'Anything repetitive should be automated.',
+		icon: 'M4 4v5h5M20 20v-5h-5M4.5 15a8 8 0 0 0 14.8 3M19.5 9A8 8 0 0 0 4.7 6',
+		tone: 'bg-gold/15 text-gold-dark',
+	},
+	{
+		title: 'Business Before Technology',
+		description: 'Technology exists to solve business problems — not create more complexity.',
+		icon: 'M4 8h16v11H4V8Zm4 0V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M4 13h16',
+		tone: 'bg-accent-violet/10 text-accent-violet',
+	},
+	{
+		title: 'Transparency',
+		description: 'Clear communication. Clear pricing. Clear results.',
+		icon: 'M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12Z M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+		tone: 'bg-accent-2/10 text-accent-dark',
+	},
 ];
 
 const process = [
@@ -282,23 +310,36 @@ const process = [
 					</div>
 					<div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 						{
-							whatWeBuild.map((item) => (
-								<div
-									class:list={[
-										'group relative overflow-hidden rounded-2xl border border-line p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-xl',
-										item.big && 'lg:col-span-2',
-									]}
-								>
-									<div class="absolute -top-8 -right-8 h-24 w-24 rounded-full bg-accent/0 blur-2xl transition-colors duration-300 group-hover:bg-accent/10" />
-									<span class="relative flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-white">
-										<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
-											<path d={item.icon} stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-										</svg>
-									</span>
-									<h3 class="relative mt-4 text-[17px] font-semibold text-ink">{item.title}</h3>
-									<p class="relative mt-2 text-[14.5px] leading-relaxed text-slate">{item.description}</p>
-								</div>
-							))
+							whatWeBuild.map((item) =>
+								item.dark ? (
+									<div
+										class:list={[
+											'group relative overflow-hidden rounded-2xl bg-ink p-6 shadow-[0_20px_50px_-25px_rgba(10,15,31,0.5)] transition-all duration-300 hover:-translate-y-1',
+											item.big && 'lg:col-span-2',
+										]}
+									>
+										<div class="bg-grid pointer-events-none absolute inset-0 opacity-30" />
+										<div class:list={['mesh-blob -top-10 -right-10 h-40 w-40', item.glow]} />
+										<span class="relative flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white backdrop-blur">
+											<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+												<path d={item.icon} stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+											</svg>
+										</span>
+										<h3 class="relative mt-4 text-[17px] font-semibold text-white">{item.title}</h3>
+										<p class="relative mt-2 text-[14.5px] leading-relaxed text-slate-dark">{item.description}</p>
+									</div>
+								) : (
+									<div class="group relative overflow-hidden rounded-2xl border border-line p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-xl">
+										<span class:list={['relative flex h-10 w-10 items-center justify-center rounded-lg', item.tone]}>
+											<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+												<path d={item.icon} stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+											</svg>
+										</span>
+										<h3 class="relative mt-4 text-[17px] font-semibold text-ink">{item.title}</h3>
+										<p class="relative mt-2 text-[14.5px] leading-relaxed text-slate">{item.description}</p>
+									</div>
+								),
+							)
 						}
 					</div>
 				</Container>
@@ -342,10 +383,12 @@ const process = [
 					<div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
 						{
 							values.map((value) => (
-								<div>
-									<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-white">
-										<span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
-									</div>
+								<div class="group">
+									<span class:list={['flex h-11 w-11 items-center justify-center rounded-xl transition-transform duration-300 group-hover:-translate-y-0.5', value.tone]}>
+										<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+											<path d={value.icon} stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+									</span>
 									<h3 class="mt-4 text-[16px] font-semibold text-ink">{value.title}</h3>
 									<p class="mt-2 text-[14.5px] leading-relaxed text-slate">{value.description}</p>
 								</div>
