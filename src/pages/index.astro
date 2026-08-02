@@ -2,7 +2,80 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Container from '../components/Container.astro';
+import Button from '../components/Button.astro';
+import CTASection from '../components/CTASection.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
+
+const how = [
+	{ label: 'AI' },
+	{ label: 'Marketing Automation' },
+	{ label: 'CRM' },
+	{ label: 'Revenue Operations' },
+	{ label: 'Customer Journey Design' },
+	{ label: 'Modern Web Experiences' },
+	{ label: 'Analytics' },
+	{ label: 'AI Search Visibility' },
+];
+
+const whatWeBuild = [
+	{
+		title: 'CRM Systems',
+		description: 'One system of record for every lead, client, and conversation — no more spreadsheets.',
+	},
+	{
+		title: 'Marketing Automation',
+		description: 'Email, SMS, and follow-up sequences that nurture leads automatically, 24/7.',
+	},
+	{
+		title: 'Lead Management',
+		description: 'Structured pipelines so no inquiry sits unanswered and every lead gets tracked to close.',
+	},
+	{
+		title: 'Client Onboarding',
+		description: 'Automated onboarding flows that set expectations and collect what you need, faster.',
+	},
+	{
+		title: 'AI Workflows',
+		description: 'AI agents and automations that handle repetitive follow-up, scheduling, and admin work.',
+	},
+	{
+		title: 'Reporting Dashboards',
+		description: 'Clear, live visibility into leads, pipeline, and ROI — no more guessing what is working.',
+	},
+];
+
+const values = [
+	{
+		title: 'Simplicity',
+		description: 'Complex businesses deserve simple systems.',
+	},
+	{
+		title: 'Automation First',
+		description: 'Anything repetitive should be automated.',
+	},
+	{
+		title: 'Business Before Technology',
+		description: 'Technology exists to solve business problems — not create more complexity.',
+	},
+	{
+		title: 'Transparency',
+		description: 'Clear communication. Clear pricing. Clear results.',
+	},
+];
+
+const process = [
+	{ step: '01', title: 'Discover', description: 'We map how leads, clients, and work actually move through your firm today.' },
+	{ step: '02', title: 'Design the System', description: 'We design the CRM, automation, and journey architecture around your goals.' },
+	{ step: '03', title: 'Build & Automate', description: 'We implement the CRM, workflows, and AI automations end to end.' },
+	{ step: '04', title: 'Optimize', description: 'We measure, refine, and improve the system continuously as your firm grows.' },
+];
 ---
 
 <!doctype html>
@@ -13,37 +86,241 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<!-- HERO -->
+			<section class="relative overflow-hidden bg-ink pt-16 pb-24 sm:pt-20 sm:pb-32">
+				<div class="bg-grid pointer-events-none absolute inset-0 opacity-50"></div>
+				<div class="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-accent/25 blur-[130px]"></div>
+
+				<Container class="relative">
+					<div class="mx-auto max-w-3xl text-center animate-fade-up">
+						<a href="/services" class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-dark hover:border-white/25">
+							<span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+							For CPA &amp; accounting firms
+						</a>
+						<h1 class="mt-6 text-4xl leading-[1.1] font-semibold text-white sm:text-5xl lg:text-6xl">
+							Building AI-Powered Growth Systems for Accounting Firms
+						</h1>
+						<p class="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-slate-dark">
+							The Visibility Firm helps CPA and accounting firms attract, convert, and retain more
+							clients through CRM, marketing automation, AI, and revenue operations — built as one
+							integrated system, not another disconnected tool.
+						</p>
+						<div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+							<Button href="/contact" variant="gold" size="lg">Book a Strategy Call</Button>
+							<Button href="/services" variant="secondary" size="lg" class="!bg-transparent !text-white !ring-white/20 hover:!bg-white/10">
+								View Case Studies
+							</Button>
+						</div>
+					</div>
+
+					<!-- Abstract product / dashboard mockup -->
+					<div class="relative mx-auto mt-16 max-w-4xl animate-fade-in">
+						<div class="rounded-2xl border border-white/10 bg-ink-2/80 p-3 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.6)] backdrop-blur">
+							<div class="flex items-center gap-1.5 px-2 pb-3">
+								<span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+								<span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+								<span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+							</div>
+							<div class="grid gap-3 rounded-xl bg-ink/60 p-5 sm:grid-cols-3">
+								<div class="rounded-lg border border-white/10 bg-white/[0.03] p-4 sm:col-span-2">
+									<p class="text-xs font-medium text-slate-dark">Qualified Leads</p>
+									<div class="mt-3 flex h-28 items-end gap-1.5">
+										{[38, 52, 46, 61, 58, 70, 64, 80, 76, 92].map((h) => (
+											<div class="flex-1 rounded-t bg-gradient-to-t from-accent/70 to-accent-2" style={`height:${h}%`}></div>
+										))}
+									</div>
+								</div>
+								<div class="flex flex-col gap-3">
+									<div class="rounded-lg border border-white/10 bg-white/[0.03] p-4">
+										<p class="text-xs font-medium text-slate-dark">Follow-ups automated</p>
+										<p class="mt-2 font-display text-2xl font-semibold text-white">100%</p>
+									</div>
+									<div class="rounded-lg border border-white/10 bg-white/[0.03] p-4">
+										<p class="text-xs font-medium text-slate-dark">System</p>
+										<p class="mt-2 flex items-center gap-1.5 text-sm text-white">
+											<span class="h-1.5 w-1.5 rounded-full bg-gold"></span> Live &amp; automated
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</Container>
+			</section>
+
+			<!-- PROBLEM -->
+			<section class="py-20 sm:py-28">
+				<Container>
+					<div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
+						<div>
+							<p class="text-xs font-semibold tracking-widest text-accent uppercase">The problem</p>
+							<h2 class="mt-4 text-3xl font-semibold sm:text-4xl">
+								Most accounting firms are still running growth on spreadsheets and guesswork.
+							</h2>
+							<p class="prose-tvf mt-5">
+								Leads slip through the cracks. Clients forget appointments. Teams waste hours on
+								repetitive work. Marketing rarely produces measurable ROI. Disconnected tools and
+								manual follow-up quietly cap how fast a firm can grow.
+							</p>
+						</div>
+						<div class="grid gap-4 sm:grid-cols-2">
+							{
+								[
+									'Leads slip through the cracks',
+									'Clients forget appointments',
+									'Teams waste hours on repetitive work',
+									'Marketing rarely produces measurable ROI',
+								].map((item) => (
+									<div class="rounded-xl border border-line bg-mist p-5">
+										<svg class="h-5 w-5 text-accent" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+											<path d="M10 6v5m0 3h.01M2.5 10a7.5 7.5 0 1 1 15 0 7.5 7.5 0 0 1-15 0Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+										<p class="mt-3 text-[15px] font-medium text-ink">{item}</p>
+									</div>
+								))
+							}
+						</div>
+					</div>
+				</Container>
+			</section>
+
+			<!-- PHILOSOPHY / HOW -->
+			<section class="border-y border-line bg-mist py-20 sm:py-28">
+				<Container>
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-xs font-semibold tracking-widest text-accent uppercase">Our philosophy</p>
+						<h2 class="mt-4 text-3xl font-semibold sm:text-4xl">
+							We don&rsquo;t implement software. We build growth systems.
+						</h2>
+						<p class="prose-tvf mt-5">
+							Technology should eliminate repetitive work, improve client communication, and create
+							predictable growth — not add another disconnected tool to your stack.
+						</p>
+					</div>
+					<div class="mx-auto mt-12 flex max-w-3xl flex-wrap justify-center gap-3">
+						{
+							how.map((item) => (
+								<span class="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-ink shadow-sm">
+									{item.label}
+								</span>
+							))
+						}
+					</div>
+				</Container>
+			</section>
+
+			<!-- WHAT WE BUILD -->
+			<section class="py-20 sm:py-28" id="services">
+				<Container>
+					<div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+						<div class="max-w-xl">
+							<p class="text-xs font-semibold tracking-widest text-accent uppercase">What we build</p>
+							<h2 class="mt-4 text-3xl font-semibold sm:text-4xl">Systems, not software.</h2>
+						</div>
+						<Button href="/services" variant="ghost">See all services</Button>
+					</div>
+					<div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+						{
+							whatWeBuild.map((item) => (
+								<div class="group rounded-2xl border border-line p-6 transition-colors hover:border-accent/30 hover:bg-mist">
+									<h3 class="text-[17px] font-semibold text-ink">{item.title}</h3>
+									<p class="mt-2 text-[14.5px] leading-relaxed text-slate">{item.description}</p>
+								</div>
+							))
+						}
+					</div>
+				</Container>
+			</section>
+
+			<!-- PROCESS -->
+			<section class="border-y border-line bg-mist py-20 sm:py-28">
+				<Container>
+					<div class="max-w-xl">
+						<p class="text-xs font-semibold tracking-widest text-accent uppercase">How we work</p>
+						<h2 class="mt-4 text-3xl font-semibold sm:text-4xl">A clear path from audit to automated system.</h2>
+					</div>
+					<div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+						{
+							process.map((item, i) => (
+								<div class="relative">
+									<p class="font-display text-4xl font-semibold text-line-dark/40" style="color: color-mix(in oklab, var(--color-accent) 18%, white);">
+										{item.step}
+									</p>
+									<h3 class="mt-3 text-[16px] font-semibold text-ink">{item.title}</h3>
+									<p class="mt-2 text-[14.5px] leading-relaxed text-slate">{item.description}</p>
+								</div>
+							))
+						}
+					</div>
+				</Container>
+			</section>
+
+			<!-- VALUES -->
+			<section class="py-20 sm:py-28">
+				<Container>
+					<div class="max-w-xl">
+						<p class="text-xs font-semibold tracking-widest text-accent uppercase">Why The Visibility Firm</p>
+						<h2 class="mt-4 text-3xl font-semibold sm:text-4xl">Built specifically for accounting firms.</h2>
+						<p class="prose-tvf mt-5">
+							Not a generic marketing agency, and not a software reseller — a growth partner that
+							understands the accounting business.
+						</p>
+					</div>
+					<div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+						{
+							values.map((value) => (
+								<div>
+									<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-white">
+										<span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+									</div>
+									<h3 class="mt-4 text-[16px] font-semibold text-ink">{value.title}</h3>
+									<p class="mt-2 text-[14.5px] leading-relaxed text-slate">{value.description}</p>
+								</div>
+							))
+						}
+					</div>
+				</Container>
+			</section>
+
+			<!-- INSIGHTS PREVIEW -->
+			{
+				posts.length > 0 && (
+					<section class="border-t border-line py-20 sm:py-28">
+						<Container>
+							<div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+								<div class="max-w-xl">
+									<p class="text-xs font-semibold tracking-widest text-accent uppercase">Insights</p>
+									<h2 class="mt-4 text-3xl font-semibold sm:text-4xl">Ideas on growth, automation, and AI for accounting firms.</h2>
+								</div>
+								<Button href="/blog" variant="ghost">Read the blog</Button>
+							</div>
+							<div class="mt-12 grid gap-6 sm:grid-cols-3">
+								{posts.map((post) => (
+									<a href={`/blog/${post.id}/`} class="group block">
+										<div class="overflow-hidden rounded-xl border border-line">
+											<img src={post.data.heroImage} alt="" class="aspect-[16/10] w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+										</div>
+										<p class="mt-4 text-xs font-medium text-slate">
+											<FormattedDate date={post.data.pubDate} />
+										</p>
+										<h3 class="mt-1.5 text-[16px] font-semibold text-ink group-hover:text-accent">{post.data.title}</h3>
+									</a>
+								))}
+							</div>
+						</Container>
+					</section>
+				)
+			}
+
+			<CTASection
+				eyebrow="Let's talk"
+				title="See what an integrated growth system looks like for your firm."
+				description="Book a free strategy call — we'll map where leads are slipping through and what an automated growth system would look like for your firm."
+				primaryLabel="Book a Strategy Call"
+				primaryHref="/contact"
+				secondaryLabel="Explore Services"
+				secondaryHref="/services"
+			/>
 		</main>
 		<Footer />
 	</body>

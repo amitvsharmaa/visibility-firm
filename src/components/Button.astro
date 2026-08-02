@@ -1,0 +1,50 @@
+---
+interface Props {
+	href: string;
+	variant?: "primary" | "secondary" | "ghost" | "gold";
+	size?: "md" | "lg";
+	class?: string;
+}
+
+const { href, variant = "primary", size = "md", class: className = "" } = Astro.props;
+
+const base =
+	"group inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-offset-4";
+
+const sizes = {
+	md: "px-5 py-2.5 text-sm",
+	lg: "px-7 py-3.5 text-[15px]",
+};
+
+const variants = {
+	primary: "bg-accent text-white hover:bg-accent-dark shadow-[0_1px_2px_rgba(10,15,31,0.08)]",
+	secondary:
+		"bg-white text-ink ring-1 ring-inset ring-line hover:ring-ink/20 hover:bg-mist",
+	ghost: "text-ink hover:text-accent",
+	gold: "bg-gold text-ink hover:bg-gold-dark",
+};
+
+const isExternal = href.startsWith("http");
+---
+
+<a
+	href={href}
+	class:list={[base, sizes[size], variants[variant], className]}
+	target={isExternal ? "_blank" : undefined}
+	rel={isExternal ? "noopener noreferrer" : undefined}
+>
+	<slot />
+	<svg
+		class="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5"
+		viewBox="0 0 16 16"
+		fill="none"
+		aria-hidden="true"
+	>
+		<path
+			d="M3.5 8h9m0 0L8.5 4m4 4-4 4"
+			stroke="currentColor"
+			stroke-width="1.5"
+			stroke-linecap="round"
+			stroke-linejoin="round"></path>
+	</svg>
+</a>

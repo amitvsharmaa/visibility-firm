@@ -1,0 +1,34 @@
+---
+// Organization / ProfessionalService JSON-LD for SEO + AI search visibility.
+const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://thevisibilityfirm.com';
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfessionalService',
+	name: 'The Visibility Firm',
+	url: site,
+	description:
+		'AI-powered growth and marketing automation consultancy helping CPA and accounting firms attract, convert, and retain more clients through CRM, RevOps, AI, and automation.',
+	areaServed: 'US',
+	serviceType: [
+		'Marketing Automation',
+		'CRM Implementation',
+		'Revenue Operations',
+		'AI Workflow Automation',
+		'AI Search Visibility',
+	],
+	audience: {
+		'@type': 'Audience',
+		audienceType: 'CPA firms, accounting firms, tax advisory firms',
+	},
+	makesOffer: {
+		'@type': 'Offer',
+		itemOffered: {
+			'@type': 'Service',
+			name: 'AI-Powered Growth Systems for Accounting Firms',
+		},
+	},
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

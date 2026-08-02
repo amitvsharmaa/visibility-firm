@@ -1,0 +1,199 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Container from '../components/Container.astro';
+import Button from '../components/Button.astro';
+import CTASection from '../components/CTASection.astro';
+
+const title = 'Services';
+const description =
+	'CRM, marketing automation, AI workflows, and reporting systems built specifically for CPA and accounting firms — organized around client acquisition, retention, automation, and visibility.';
+
+const groups = [
+	{
+		label: 'Attract & Convert',
+		summary: 'Turn more inquiries into booked clients.',
+		items: [
+			{
+				title: 'CRM Systems',
+				description: 'One system of record for every lead and client — replacing spreadsheets and sticky notes with a single source of truth.',
+			},
+			{
+				title: 'Lead Management',
+				description: 'Structured pipelines and instant routing so every inquiry is captured, tracked, and followed up on — automatically.',
+			},
+			{
+				title: 'Marketing Automation',
+				description: 'Nurture sequences that follow up with leads consistently, so interest doesn’t go cold while your team is busy with clients.',
+			},
+		],
+	},
+	{
+		label: 'Onboard & Retain',
+		summary: 'Give every client a consistent, professional experience.',
+		items: [
+			{
+				title: 'Client Onboarding',
+				description: 'Automated onboarding flows that collect documents, set expectations, and get new clients started without back-and-forth emails.',
+			},
+			{
+				title: 'Appointment Automation',
+				description: 'Scheduling, reminders, and confirmations that run themselves — fewer no-shows, less time on the phone.',
+			},
+			{
+				title: 'Review Automation',
+				description: 'Systematic requests for reviews after great client outcomes, building visibility and trust over time.',
+			},
+		],
+	},
+	{
+		label: 'Automate & Scale',
+		summary: 'Take repetitive work off your team’s plate.',
+		items: [
+			{
+				title: 'Email & SMS Automation',
+				description: 'Timely, relevant messages delivered on the channel clients actually respond to — without manual sending.',
+			},
+			{
+				title: 'AI Workflows',
+				description: 'AI agents that handle routine follow-up, data entry, and scheduling, so your team spends time on client work, not admin.',
+			},
+		],
+	},
+	{
+		label: 'Measure & Improve',
+		summary: 'Know what’s working, with numbers to prove it.',
+		items: [
+			{
+				title: 'Reporting Dashboards',
+				description: 'Live visibility into leads, pipeline, and ROI in one place — no more piecing reports together by hand.',
+			},
+			{
+				title: 'AI Search Visibility',
+				description: 'Positioning your firm to be found in AI-powered search and traditional search alike, as the way people find services changes.',
+			},
+		],
+	},
+];
+
+const process = [
+	{ step: '01', title: 'Discover', description: 'A working session to map how leads, clients, and work move through your firm today.' },
+	{ step: '02', title: 'Design the System', description: 'We design the CRM, automation, and journey architecture around your goals — then choose the right technology to deliver it.' },
+	{ step: '03', title: 'Build & Automate', description: 'We implement the CRM, workflows, and AI automations end to end, and train your team to use them.' },
+	{ step: '04', title: 'Optimize', description: 'We measure results and continuously refine the system as your firm grows.' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- HERO -->
+			<section class="border-b border-line bg-mist py-20 sm:py-28">
+				<Container>
+					<div class="mx-auto max-w-3xl text-center">
+						<p class="text-xs font-semibold tracking-widest text-accent uppercase">Services</p>
+						<h1 class="mt-4 text-4xl font-semibold sm:text-5xl">Everything your growth system needs. Nothing it doesn&rsquo;t.</h1>
+						<p class="prose-tvf mx-auto mt-6 max-w-2xl text-[17px]">
+							We build CRM, automation, and AI systems around business outcomes — using the right
+							technology for your firm, whether that&rsquo;s GoHighLevel, HubSpot, custom AI agents,
+							or automation platforms like n8n. The tool changes; the system we design around your
+							firm doesn&rsquo;t.
+						</p>
+						<div class="mt-8 flex justify-center">
+							<Button href="/contact" variant="primary" size="lg">Book a Strategy Call</Button>
+						</div>
+					</div>
+				</Container>
+			</section>
+
+			<!-- SERVICE GROUPS -->
+			<section class="py-20 sm:py-28">
+				<Container>
+					<div class="space-y-16">
+						{
+							groups.map((group) => (
+								<div class="grid gap-8 lg:grid-cols-[280px_1fr] lg:gap-16">
+									<div>
+										<h2 class="text-2xl font-semibold text-ink">{group.label}</h2>
+										<p class="mt-2 text-[14.5px] text-slate">{group.summary}</p>
+									</div>
+									<div class="grid gap-5 sm:grid-cols-2">
+										{group.items.map((item) => (
+											<div class="rounded-2xl border border-line p-6">
+												<h3 class="text-[16px] font-semibold text-ink">{item.title}</h3>
+												<p class="mt-2 text-[14.5px] leading-relaxed text-slate">{item.description}</p>
+											</div>
+										))}
+									</div>
+								</div>
+							))
+						}
+					</div>
+				</Container>
+			</section>
+
+			<!-- PROCESS -->
+			<section class="border-y border-line bg-ink py-20 text-white sm:py-28">
+				<Container>
+					<div class="max-w-xl">
+						<p class="text-xs font-semibold tracking-widest text-gold uppercase">Our process</p>
+						<h2 class="mt-4 text-3xl font-semibold sm:text-4xl">From audit to automated system.</h2>
+					</div>
+					<div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+						{
+							process.map((item) => (
+								<div>
+									<p class="font-display text-4xl font-semibold text-white/20">{item.step}</p>
+									<h3 class="mt-3 text-[16px] font-semibold text-white">{item.title}</h3>
+									<p class="mt-2 text-[14.5px] leading-relaxed text-slate-dark">{item.description}</p>
+								</div>
+							))
+						}
+					</div>
+				</Container>
+			</section>
+
+			<!-- CASE STUDIES PLACEHOLDER -->
+			<section id="case-studies" class="py-20 sm:py-28">
+				<Container>
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-xs font-semibold tracking-widest text-accent uppercase">Case studies</p>
+						<h2 class="mt-4 text-3xl font-semibold sm:text-4xl">Case studies are on the way.</h2>
+						<p class="prose-tvf mt-5">
+							We&rsquo;re currently onboarding our first accounting-firm partners. Book a strategy
+							call and we&rsquo;ll walk you through exactly how this system would work for your firm.
+						</p>
+						<div class="mt-8 flex justify-center">
+							<Button href="/contact" variant="secondary" size="lg">Book a Strategy Call</Button>
+						</div>
+					</div>
+				</Container>
+			</section>
+
+			<!-- PRICING NOTE -->
+			<section class="border-t border-line bg-mist py-16">
+				<Container>
+					<div class="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center">
+						<p class="text-xs font-semibold tracking-widest text-accent uppercase">Transparency</p>
+						<p class="text-[16px] text-ink">
+							Clear communication. Clear pricing. Clear results. Every engagement starts with a
+							strategy call to scope exactly what your firm needs before any pricing is discussed.
+						</p>
+					</div>
+				</Container>
+			</section>
+
+			<CTASection
+				title="Let's design your growth system."
+				description="Book a free strategy call — no pressure, no generic pitch. Just a clear look at where automation would save your firm the most time."
+			/>
+		</main>
+		<Footer />
+	</body>
+</html>

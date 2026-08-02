@@ -1,0 +1,28 @@
+---
+interface Props {
+	variant?: "dark" | "light";
+	class?: string;
+}
+const { variant = "dark", class: className = "" } = Astro.props;
+const textColor = variant === "light" ? "text-white" : "text-ink";
+const subColor = variant === "light" ? "text-slate-dark" : "text-slate";
+const markBg = variant === "light" ? "bg-white/10" : "bg-ink";
+const markFg = variant === "light" ? "text-white" : "text-white";
+---
+
+<span class:list={["inline-flex items-center gap-2.5", className]}>
+	<span
+		class:list={[
+			"flex h-8 w-8 shrink-0 items-center justify-center rounded-lg",
+			markBg,
+		]}
+	>
+		<svg viewBox="0 0 24 24" class:list={["h-4 w-4", markFg]} fill="none" aria-hidden="true">
+			<path d="M4 16.5 9.5 11l3.5 3 7-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+			<path d="M15.5 6H20v4.5" stroke="var(--color-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	</span>
+	<span class:list={["font-display text-[15px] leading-none font-semibold tracking-tight", textColor]}>
+		The Visibility<span class="text-accent">.</span>Firm
+	</span>
+</span>

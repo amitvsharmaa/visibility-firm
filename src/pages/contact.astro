@@ -1,0 +1,191 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Container from '../components/Container.astro';
+import { CONTACT_EMAIL } from '../consts';
+
+const title = 'Contact';
+const description =
+	'Book a free strategy call with The Visibility Firm and see how an AI-powered growth system could work for your accounting firm.';
+
+const faqs = [
+	{
+		q: 'What happens on a strategy call?',
+		a: 'We map how leads, clients, and follow-up currently move through your firm, identify where things are slipping through the cracks, and outline what an automated growth system would look like for you specifically — no generic pitch.',
+	},
+	{
+		q: 'Do we need to already use a CRM?',
+		a: 'No. Some firms we work with have no CRM at all, some have one they’ve outgrown, and some just need the automation layer built on top of what they already have. We design around where you are.',
+	},
+	{
+		q: 'How long does implementation take?',
+		a: 'It depends on scope, but most firms see their first automations live within a few weeks of kickoff, with the full system rolled out in phases after that.',
+	},
+	{
+		q: 'Do you require long-term contracts?',
+		a: 'Clear pricing and clear terms are one of our core values — we’ll walk you through exactly how engagements work on your strategy call.',
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- HERO -->
+			<section class="border-b border-line bg-mist py-20 sm:py-24">
+				<Container>
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-xs font-semibold tracking-widest text-accent uppercase">Contact</p>
+						<h1 class="mt-4 text-4xl font-semibold sm:text-5xl">Let&rsquo;s build your growth system.</h1>
+						<p class="prose-tvf mx-auto mt-6 max-w-xl text-[17px]">
+							Tell us a bit about your firm and we&rsquo;ll follow up to schedule your free strategy
+							call.
+						</p>
+					</div>
+				</Container>
+			</section>
+
+			<!-- FORM + INFO -->
+			<section class="py-20 sm:py-28">
+				<Container>
+					<div class="grid gap-14 lg:grid-cols-[1fr_380px] lg:gap-20">
+						<!--
+							Front-end only for now. Wire the `action` up to your CRM/GoHighLevel
+							form endpoint (or another form backend) to start receiving submissions —
+							the JS below just shows a confirmation state on submit.
+						-->
+						<form id="contact-form" class="space-y-5" method="POST" action="#">
+							<div class="grid gap-5 sm:grid-cols-2">
+								<div>
+									<label for="name" class="text-sm font-medium text-ink">Full name</label>
+									<input
+										id="name"
+										name="name"
+										type="text"
+										required
+										autocomplete="name"
+										class="mt-2 w-full rounded-lg border border-line bg-white px-4 py-2.5 text-[15px] text-ink placeholder:text-slate-2 focus:border-accent focus:outline-none"
+										placeholder="Jane Smith"
+									/>
+								</div>
+								<div>
+									<label for="firm" class="text-sm font-medium text-ink">Firm name</label>
+									<input
+										id="firm"
+										name="firm"
+										type="text"
+										required
+										class="mt-2 w-full rounded-lg border border-line bg-white px-4 py-2.5 text-[15px] text-ink placeholder:text-slate-2 focus:border-accent focus:outline-none"
+										placeholder="Smith & Co. CPAs"
+									/>
+								</div>
+							</div>
+							<div class="grid gap-5 sm:grid-cols-2">
+								<div>
+									<label for="email" class="text-sm font-medium text-ink">Work email</label>
+									<input
+										id="email"
+										name="email"
+										type="email"
+										required
+										autocomplete="email"
+										class="mt-2 w-full rounded-lg border border-line bg-white px-4 py-2.5 text-[15px] text-ink placeholder:text-slate-2 focus:border-accent focus:outline-none"
+										placeholder="jane@smithcpas.com"
+									/>
+								</div>
+								<div>
+									<label for="phone" class="text-sm font-medium text-ink">Phone</label>
+									<input
+										id="phone"
+										name="phone"
+										type="tel"
+										autocomplete="tel"
+										class="mt-2 w-full rounded-lg border border-line bg-white px-4 py-2.5 text-[15px] text-ink placeholder:text-slate-2 focus:border-accent focus:outline-none"
+										placeholder="(555) 000-0000"
+									/>
+								</div>
+							</div>
+							<div>
+								<label for="message" class="text-sm font-medium text-ink">What&rsquo;s slowing your firm down right now?</label>
+								<textarea
+									id="message"
+									name="message"
+									rows="4"
+									class="mt-2 w-full rounded-lg border border-line bg-white px-4 py-2.5 text-[15px] text-ink placeholder:text-slate-2 focus:border-accent focus:outline-none"
+									placeholder="e.g. leads go cold, no CRM, too much manual follow-up..."></textarea>
+							</div>
+							<button
+								type="submit"
+								class="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-[15px] font-medium text-white transition-colors hover:bg-accent-dark"
+							>
+								Book a Strategy Call
+							</button>
+							<p id="form-success" class="hidden rounded-lg bg-mist px-4 py-3 text-[14.5px] text-ink">
+								Thanks — we&rsquo;ve got your details and will follow up shortly to schedule your call.
+							</p>
+						</form>
+
+						<div class="space-y-8">
+							<div class="rounded-2xl border border-line p-6">
+								<p class="text-xs font-semibold tracking-widest text-accent uppercase">Email us</p>
+								<a href={`mailto:${CONTACT_EMAIL}`} class="mt-2 block text-[16px] font-medium text-ink hover:text-accent">
+									{CONTACT_EMAIL}
+								</a>
+							</div>
+							<div class="rounded-2xl bg-ink p-6 text-white">
+								<p class="text-xs font-semibold tracking-widest text-gold uppercase">What to expect</p>
+								<ul class="prose-tvf mt-3 space-y-2 text-[14.5px] text-slate-dark">
+									<li>A 20–30 minute call, focused on your firm.</li>
+									<li>A clear picture of where leads and time are slipping away.</li>
+									<li>No pressure, no generic pitch.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</Container>
+			</section>
+
+			<!-- FAQ -->
+			<section class="border-t border-line bg-mist py-20 sm:py-28">
+				<Container>
+					<div class="mx-auto max-w-2xl">
+						<p class="text-center text-xs font-semibold tracking-widest text-accent uppercase">FAQ</p>
+						<h2 class="mt-4 text-center text-3xl font-semibold sm:text-4xl">Common questions</h2>
+						<div class="mt-12 divide-y divide-line">
+							{
+								faqs.map((item) => (
+									<details class="group py-5">
+										<summary class="flex cursor-pointer list-none items-center justify-between text-[16px] font-medium text-ink">
+											{item.q}
+											<svg class="h-4 w-4 shrink-0 text-slate transition-transform group-open:rotate-45" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+												<path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+											</svg>
+										</summary>
+										<p class="mt-3 text-[14.5px] leading-relaxed text-slate">{item.a}</p>
+									</details>
+								))
+							}
+						</div>
+					</div>
+				</Container>
+			</section>
+		</main>
+		<Footer />
+
+		<script>
+			const form = document.getElementById('contact-form') as HTMLFormElement | null;
+			const success = document.getElementById('form-success');
+			form?.addEventListener('submit', (e) => {
+				e.preventDefault();
+				success?.classList.remove('hidden');
+				form.reset();
+			});
+		</script>
+	</body>
+</html>

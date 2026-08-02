@@ -1,0 +1,49 @@
+---
+import Container from './Container.astro';
+import Button from './Button.astro';
+
+interface Props {
+	eyebrow?: string;
+	title: string;
+	description?: string;
+	primaryLabel?: string;
+	primaryHref?: string;
+	secondaryLabel?: string;
+	secondaryHref?: string;
+}
+
+const {
+	eyebrow = 'Get started',
+	title,
+	description,
+	primaryLabel = 'Book a Strategy Call',
+	primaryHref = '/contact',
+	secondaryLabel,
+	secondaryHref,
+} = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-ink py-20 sm:py-24">
+	<div class="bg-grid pointer-events-none absolute inset-0 opacity-60"></div>
+	<div
+		class="pointer-events-none absolute -top-32 right-0 h-80 w-80 rounded-full bg-accent/30 blur-[100px]"
+	>
+	</div>
+	<Container class="relative">
+		<div class="mx-auto max-w-2xl text-center">
+			<p class="text-xs font-semibold tracking-widest text-gold uppercase">{eyebrow}</p>
+			<h2 class="mt-4 text-3xl font-semibold text-white sm:text-4xl">{title}</h2>
+			{description && <p class="mt-4 text-[15.5px] leading-relaxed text-slate-dark">{description}</p>}
+			<div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+				<Button href={primaryHref} variant="gold" size="lg">{primaryLabel}</Button>
+				{
+					secondaryLabel && secondaryHref && (
+						<Button href={secondaryHref} variant="secondary" size="lg" class="!bg-transparent !text-white !ring-white/25 hover:!bg-white/10">
+							{secondaryLabel}
+						</Button>
+					)
+				}
+			</div>
+		</div>
+	</Container>
+</section>
